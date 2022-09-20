@@ -3,18 +3,17 @@ import React, {useState} from 'react';
 
 export default function App() {
 const [value, setValue] = React.useState('placeholder');
-const [isEnabled, setIsEnabled] = useState(false);
+const [isEnabled, setIsEnabled] = React.useState(false);
 const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-const [color, setColor] = React.useState('yellow');
 
   return (
     <View style={[styles.container,
-                 {backgroundColor:color}]}
-          onValueChange = {color => setColor(color)}>
+                  isEnabled ? {backgroundColor: 'grey'} : {backgroundColor: 'yellow'}
+                  ]}>
 
       <Switch onValueChange={toggleSwitch}
-              value={isEnabled}
-              onClick={() => setColor('grey')}></Switch>
+              value={isEnabled}>
+      </Switch>
 
       <TextInput style={styles.edit}
                  clearTextFocus = 'ture'
